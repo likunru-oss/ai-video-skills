@@ -1,9 +1,16 @@
 # AI Video Skills · AI 视频制作 SOP
 
-一套给 [Claude Code](https://claude.com/claude-code) 用的 skill（技能包）：把任何故事、剧本或一句想法，变成一整套**可以直接执行**的 AI 视频制作包——人物和场景的出图提示词、[Seedance 2.0](https://seed.bytedance.com/) 全能参考模式的视频提示词、剪映操作清单和上线前对照清单。
+一套 AI 视频制作 skill（技能包），支持 [Claude Code](https://claude.com/claude-code)、ChatGPT、WorkBuddy 等平台：把任何故事、剧本或一句想法，变成一整套**可以直接执行**的 AI 视频制作包——人物和场景的出图提示词、[Seedance 2.0](https://seed.bytedance.com/) 全能参考模式的视频提示词、剪映操作清单和上线前对照清单。
 
-> A Claude Code skill pack that turns any story or one-line idea into a ready-to-shoot AI video production package (Chinese-first).
-> （一套 Claude Code 技能包，把任何故事或一句想法变成可以直接开拍的 AI 视频制作包，以中文为主。）
+> An Agent Skills pack (Claude Code, ChatGPT, WorkBuddy and more) that turns any story or one-line idea into a ready-to-shoot AI video production package (Chinese-first).
+> （一套遵循 Agent Skills 标准的技能包，可用于 Claude Code、ChatGPT、WorkBuddy 等平台，把任何故事或一句想法变成可以直接开拍的 AI 视频制作包，以中文为主。）
+
+| 平台 | 用哪个 |
+|---|---|
+| Claude Code | `skills/` 文件夹，安装方法见下面"安装" |
+| ChatGPT、WorkBuddy 等支持 Skills 的平台 | `universal/ai-video-sop.zip`，说明见 [universal/README.md](universal/README.md) |
+| ChatGPT 自定义 GPT | `universal/gpt/`，说明见 [universal/README.md](universal/README.md) |
+| 其他平台（豆包、Kimi、Gemini 等的项目 / 知识库） | `universal/single-file/ai-video-sop-完整版.md` |
 
 ---
 
@@ -65,6 +72,10 @@
 - **完整版和团队版分开：** 本地制作包是完整版；提示词逐条贴在聊天里方便复制；同步到 Notion、网页、在线文档的是团队版，只放故事、脚本、品牌风险、锚点、清单、剪映步骤和对照，不放任何提示词。
 - **15 秒广告自动精简：** 最多 6–7 段，每个 AI 镜头不短于 2 秒，生成多少就用多少，剪出来正好 15 秒。
 - **少用第一视角：** 驾驶室主观视角最难生成，默认改用车外固定机位、越肩或低机位。
+- **故事有真实依据：** 每个故事都写一段"真实依据"（真实案例、新闻、法规或可对照的地点），数字先核实再写。
+- **开头 0–2 秒抓人：** 痛点型广告开头先给损失或麻烦，功能型广告有自然的钩子就放最前。
+- **App 画面在生成里做：** 手指点按和屏幕切换写进视频提示词，屏幕内容绑定你提供的截图（物料位），不用再拼录屏。
+- **人物可以露脸：** 只演戏，不对着镜头做证言，配音放画外。
 - **全中文输出：** 所有英文台词、字幕都附中文翻译。
 
 ---
@@ -73,14 +84,16 @@
 
 | 工具 | 用途 |
 |---|---|
-| [Claude Code](https://claude.com/claude-code)（命令行、桌面版或 IDE 插件都可以） | 运行 skill，生成制作包 |
+| [Claude Code](https://claude.com/claude-code)、ChatGPT、WorkBuddy 等任一平台 | 运行 skill，生成制作包 |
 | Nano Banana Pro（Gemini 图像模型） | 出人物三视图、车辆、道具、场景、字卡等资产图 |
 | Seedance 2.0 全能参考模式（即梦 / 火山引擎等入口） | 生成视频 |
 | 剪映 / CapCut | 按操作清单完成剪辑 |
 
 ---
 
-## 安装
+## 安装（Claude Code）
+
+其他平台的安装方法见 [universal/README.md](universal/README.md)。
 
 **方法一：用命令行**
 
@@ -127,7 +140,7 @@ skill 只问推不出来又会明显影响结果的项（时长、比例、画�
 3. 产出物清单
 4. 资产图提示词：人物三视图（C）、车辆（T）、道具（P）、场景（E）、产品（PR，TVC 用）、成品字卡和结尾画面（W）
 5. 视频提示词：每条一个代码块，写好上传顺序
-6. 需要你提供的录屏、UI 和配音
+6. 需要你提供的物料位（App 截图）和配音
 7. 剪映操作清单
 8. 上线前对照清单
 
@@ -173,6 +186,12 @@ ai-video-skills/
     └── character-sheet/
         ├── SKILL.md                         人物三视图模板
         └── references/examples.md           8 个人物示例
+universal/                                   通用版（ChatGPT、WorkBuddy 等）
+├── README.md                                各平台安装说明
+├── ai-video-sop.zip                         标准 skill 压缩包，直接上传
+├── ai-video-sop/                            解压后的同一个 skill（人物三视图已合并进来）
+├── gpt/                                     自定义 GPT：instructions.md + knowledge/
+└── single-file/ai-video-sop-完整版.md       单文件完整版
 ```
 
 ---
@@ -180,7 +199,7 @@ ai-video-skills/
 ## 注意事项
 
 - 人物都是 AI 原创面孔，提示词里写明"不像任何真实名人"；画面里默认不出现任何别家品牌、车标和真实车牌。
-- App 界面一律用真实录屏，不让 AI 生成。
+- App 画面在视频生成里做：手指点按和屏幕切换写进提示词，屏幕内容绑定你提供的 App 截图（物料位 M1、M2…），不再拼接整段录屏；屏幕文字变形时再退回真实录屏。
 - 配音请用签约配音演员或有授权的合成声线。
 - 涉及功效、数据、时长的宣传语，上线前请准备好依据。
 - 生成效果会随模型版本变化，提示词里写的是"让模型更容易做对"的写法，不保证一次成功。
