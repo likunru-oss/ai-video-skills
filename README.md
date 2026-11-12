@@ -1,6 +1,6 @@
 # AI Video Skills · AI 视频制作 SOP
 
-一套 AI 视频制作 skill（技能包），支持 [Claude Code](https://claude.com/claude-code)、ChatGPT、WorkBuddy 等平台：把任何故事、剧本或一句想法，变成一整套**可以直接执行**的 AI 视频制作包——人物和场景的出图提示词、[Seedance 2.0](https://seed.bytedance.com/) 全能参考模式的视频提示词、剪映操作清单和上线前对照清单。
+一套 AI 视频制作 skill（技能包），支持 [Claude Code](https://claude.com/claude-code)、ChatGPT、WorkBuddy 等平台：把任何故事、剧本或一句想法，变成一整套**可以直接执行**的 AI 视频制作包——人物和场景的出图提示词、[Seedance 2.5](https://seed.bytedance.com/) 全能参考模式的视频提示词、剪映操作清单和上线前对照清单。
 
 > An Agent Skills pack (Claude Code, ChatGPT, WorkBuddy and more) that turns any story or one-line idea into a ready-to-shoot AI video production package (Chinese-first).
 > （一套遵循 Agent Skills 标准的技能包，可用于 Claude Code、ChatGPT、WorkBuddy 等平台，把任何故事或一句想法变成可以直接开拍的 AI 视频制作包，以中文为主。）
@@ -66,7 +66,7 @@
 - **一致性锚点：** 每个人物、车辆、道具、场景都有固定名字，参考图写成 `固定名字：@图片N，锁定……`，正文一律用全名，人和物不会换脸、换样子。
 - **后期最小化：** 牌子上的数字直接生成；包装大字、结尾画面、角标用 Nano Banana 直接出成品图；剩下的只留剪映里点一下就完成的操作。
 - **人物三视图固定模板：** 脸部按固定顺序写细，只留一个辨识特征，原创面孔，衣服无品牌。
-- **每条都带专属负面提示词**，符合 Seedance 2.0 的限制（时长档位、最多 9 张图）。
+- **每条都带专属负面提示词**，符合 Seedance 2.5 的限制（时长档位、最多 9 张图）。
 - **品牌风险清单：** 按高、中、低列出，每条写怎么处理，并在上线前对照清单里逐条检查。
 - **"故事"一节放在最前面：** 脚本前先用 3–5 句大白话讲清片子讲了什么，再写一句"要传达的"，没看过脚本的人也能一眼看懂。
 - **完整版和团队版分开：** 本地制作包是完整版；提示词逐条贴在聊天里方便复制；同步到 Notion、网页、在线文档的是团队版，只放故事、脚本、品牌风险、锚点、清单、剪映步骤和对照，不放任何提示词。
@@ -86,14 +86,22 @@
 |---|---|
 | [Claude Code](https://claude.com/claude-code)、ChatGPT、WorkBuddy 等任一平台 | 运行 skill，生成制作包 |
 | Nano Banana Pro（Gemini 图像模型） | 出人物三视图、车辆、道具、场景、字卡等资产图 |
-| Seedance 2.0 全能参考模式（即梦 / 火山引擎等入口） | 生成视频 |
+| Seedance 2.5 全能参考模式（即梦 / 火山引擎等入口） | 生成视频 |
 | 剪映 / CapCut | 按操作清单完成剪辑 |
 
 ---
 
 ## 安装（Claude Code）
 
-其他平台的安装方法见 [universal/README.md](universal/README.md)。
+其他平台（WorkBuddy、ChatGPT、Codex 等）同样支持"命令行"和"让平台的 AI 帮你装"两种方式，命令和要发的话见 [universal/README.md](universal/README.md)。例如 WorkBuddy：
+
+```bash
+git clone https://github.com/likunru-oss/ai-video-skills.git && mkdir -p ~/.workbuddy/skills && cp -R ai-video-skills/universal/ai-video-sop ~/.workbuddy/skills/
+```
+
+或者在 WorkBuddy 对话里说：
+
+> 帮我安装一个技能：从 https://github.com/likunru-oss/ai-video-skills 下载 `universal/ai-video-sop` 整个文件夹，放到你的技能目录，装好后列出文件确认。
 
 **方法一：用命令行**
 
@@ -152,7 +160,7 @@ skill 只问推不出来又会明显影响结果的项（时长、比例、画�
 
 把第四部分的提示词逐条复制到 Nano Banana Pro，比例 16:9（字卡、结尾画面按成片比例）。带字的牌子会给"带字版"和"空白备用版"两张。
 
-### 5. 生成视频（Seedance 2.0 全能参考）
+### 5. 生成视频（Seedance 2.5 全能参考）
 
 每条视频提示词上方写了**上传顺序**。按顺序上传资产图，它们会自动编号为 @图片1、@图片2……，然后把整个代码块（包括末尾的负面提示词）粘贴进去，时长选提示词开头写的秒数。
 
